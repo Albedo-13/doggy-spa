@@ -1,36 +1,178 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tестовое задание Modsen Doggy Spa
 
-## Getting Started
 
-First, run the development server:
+## Содержание
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Техническое задание](#Техническое-задание)
+- [API](#API)
+- [Используемые технологии](#Используемые-технологии)
+- [Необходимый функционал](#Необходимый-функционал)
+- [Дополнительный функционал](#Дополнительный-функционал)
+- [Описание экранов](#Описание-экранов)
+- [Тестирование](#Тестирование)
+- [Полезные ссылки](#Полезные-ссылки)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Техническое задание
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Необходимо реализовать React приложение "Modsen Doggy Spa" по предоставленному дизайну из Figma с использование server-side rendering(NextJS) и GraphQl.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API 
 
-## Deploy on Vercel
+Список API для использования(если представленные API не удовлетворяют каким-либо условиям задания, можно использовать любые
+другие открытые API для поиска информации о собаках):
+- ***[API DOGS](https://api-ninjas.com/api/dogs)*** - данные о собаках.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Используемые технологии
+
+
+- **_yarn_** - менеджер пакетов;
+- **_TS_** - инструмент строгой типизации;
+- **_react-router-dom_** - инструмент управления состоянием;
+- **_email-js_** - библиотека позволяющая отправлять электронные письма на почту;
+- ***styled-components*** - система стилизации react компонентов;
+- ***cypress*** — e2e тестирование для web-приложений;
+- ***jest*** — unit-тестирование;
+- **_yup_** - библиотека для валидации форм;
+- **_nextJS_** - фреймворк на JavaScript, использующий React для построения server-side render;
+- **_GraphQL_** - язык запросов для взаимодействия клиента и сервера, а также среда исполнения этих запросов;
+- **_Apollo_** - открытый соответствующий спецификации GraphQL-сервер;
+- **_paypal-js_** - библиотека для подключения PayPal.
+
+
+## Необходимый функционал:
+
+Приложение должно предоставлять возможность:
+
+- отправки писем на электронную почту;
+- просмотр интерактивной карты;
+- смены языка (продумать самостоятельно);
+- поиск информации о собаке с реализацией elastic search.
+
+
+## Дополнительный функционал
+
+- Настроить CI/CD, используя [GitHub Actions](https://github.com/features/actions);
+- Собрать проект с нуля(с настройками всех конфигов: eslint, prettier, husky и тд.).
+
+
+### Пример графического представления:
+
+
+Ссылка на макет: [Макет "Modsen Doggy Spa"](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=0-1&t=trQ4MSsKK7EV56dv-0>).
+
+
+### Также проект предполагает:
+
+
+- Организацию файловой структуры описанной в [structure](https://github.com/mkrivel/structure);
+- Создание своего сервера на GraphQL;
+- Обработку ошибок через паттерн _"Error Boundaries"_;
+- Использование TypeScript для типизирования и уменьшения количества потенциальных багов;
+- Использование алиасов для импортирования файлов;
+- Реализация должна быть выполнена без использования UI библиотек;
+- Обязательная валидация всех текстовых полей с использованием _yup_;
+- Оптимизацию дизайна под мобильные устройства;
+- Покрытие тестами всего приложения (cypress, jest, ...);
+- Создание UI библиотеки компонентов, используя storybook;
+- Обязательную анимацию при наведения, нажатии на кнопки, прокрутки карусели и слайдеров, появлении элементов на странице при рендере и скролле;
+- Творчество в контексте анимации, помимо обязательной выше, приветствуется.
+
+
+## Описание экранов
+
+Каждая страница содержит в шапке профиля навигацию по страницам сайта, а также в подвале сайта 
+должна быть реализована форма отправки сообщения на электронную почту выполняющего.
+
+
+1. [Главная Home](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-16057&t=trQ4MSsKK7EV56dv-0>).
+В блоке "Your dog running amok in the dirt?" при нажатии на кнопку "Book Appointment" происходит переход на страницу Book Appointment.
+В блоке "Sign Up to Bark Newsletter" должна бытьреализована форма отправки сообщения на выбранную почту.
+
+2. [Главная Shop Products](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-16378&t=trQ4MSsKK7EV56dv-0>).
+На странице должна быть возможность поиска информации о собаке, которую ввел пользователь. Поиск должен быт реализован с помощью elastic search.
+При некорректном поиске должна отображаться ошибка или запасной UI. 
+
+3. [Главная Spa Packages](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-15485&t=trQ4MSsKK7EV56dv-0>).
+На данной странице должна отображаться информация об услугах салона.
+
+4. [Главная Book Appt Page](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-16786&t=trQ4MSsKK7EV56dv-0>).
+На данной странице должна отображаться интерактивная карта, она является интерактивной, на которой отображаются точки (минимум 3) удаленные друг от друга (точки определяет выполняющий).
+В блоке "Enter your information here" должна быть реализована отправка формы со своим шаблоном.
+В блоке "Choose a timeslot on Dec." можно выбрать удобное время для услуг и добавить календарь для отображения и выбора даты.
+В блоке "Enter your payment information" должно открываться модальное окно с введенными пользователям данными о банковской карте с возможность оплаты с помощью PayPal.
+При нажатии на кнопку "Book Appointment", которая отвечает за букинг, должно открывать модальное окно, где будет отображаться вся выбранная пользователем информация о времени, дате, комментарии и после успешного подтверждения данные сохраняется в LocalStorage.
+
+
+5. [Главная Spa Packages](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-15572&t=trQ4MSsKK7EV56dv-0>).
+
+
+6. [Главная About As](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-15255&t=trQ4MSsKK7EV56dv-0>)
+
+
+7. [Главная Contact Us](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-15667&t=trQ4MSsKK7EV56dv-0>)
+На данной странице должна быть возможность реализации отправки письма с введенными данными на выбранную почту.
+
+
+
+## Тестирование
+
+
+Реализовать тестирование c полным покрытием функционала приложения:
+
+- Модуль навигации;
+- Модуль поиска;
+- Модуль оплаты;
+- Модуль введенных данных для букинга.
+
+
+## Полезные ссылки
+
+
+[React](https://reactjs.org/docs/getting-started.html)
+
+
+[React hooks](https://reactjs.org/docs/hooks-intro.html)
+
+
+[React router dom](https://reacttraining.com/react-router/web/guides/quick-start)
+
+
+[GraphQL](https://www.apollographql.com/blog/graphql/examples/building-a-graphql-api/)
+
+
+[Styled-components](https://www.styled-components.com/docs)
+
+
+[React redux](https://react-redux.js.org/introduction/quick-start)
+
+
+[NextJS](https://nextjs.org/docs)
+
+
+[Тестирование Cypress](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell)
+
+
+[Тестирование Jest](https://jestjs.io/ru/docs/getting-started)
+
+
+[Email-js](https://www.emailjs.com/docs/examples/reactjs/)
+
+
+[Yup](https://www.npmjs.com/package/yup)
+
+
+[Storybook](https://dev.to/iamrishupatel/how-to-create-a-react-component-library-using-storybook-typescript-scss-and-rollup-4pin)
+
+
+[next-intl](https://next-intl-docs.vercel.app/)
+
+
+[GitHub Actions](https://github.com/features/actions)
+
+
+[Heroku](https://devcenter.heroku.com/articles/heroku-cli)
