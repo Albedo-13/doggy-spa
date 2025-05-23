@@ -1,0 +1,45 @@
+@use '@/styles/colors' as *;
+@use '@/styles/variables' as *;
+
+.aboutSpa {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 70px 20px 200px 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: $fs70;
+}
+
+.subtitle {
+  text-align: center;
+  font-weight: $fw400;
+  font-size: $fs40;
+  font-family: var(--font-tangerine);
+  margin-top: 25px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-width: 460px;
+  border: 5px solid $rosey_cheek;
+  justify-content: center;
+}
+
+.block {
+  display: flex;
+  gap: 80px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.text {
+  font-weight: $fw500;
+  font-size: $fs30;
+  line-height: 170%;
+  flex: 0 50%;
+}

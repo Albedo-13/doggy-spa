@@ -1,0 +1,13 @@
+@use '@/styles/variables' as *;
+
+.infoDog {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: $fs70;
+}

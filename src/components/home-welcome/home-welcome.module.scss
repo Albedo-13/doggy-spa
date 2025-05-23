@@ -1,0 +1,56 @@
+@use '@/styles/colors' as *;
+@use '@/styles/variables' as *;
+
+.homeWelcome {
+  background-color: rgba($color: $rosey_cheek, $alpha: 0.8);
+}
+
+.wrapper {
+  padding: 0 20px;
+  max-width: 1550px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-width: 900px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-size: $fs70;
+}
+
+.subtitle {
+  font-size: $fs63;
+  text-shadow: -1px 1px $black, 1px 1px $black, 1px -1px $black,
+    -1px -1px $black;
+}
+
+// TODO: все media к константам
+@media (max-width: 1120px) {
+  .homeWelcome {
+    padding-top: 20px;
+  }
+
+  .image {
+    max-width: 500px;
+  }
+
+  .wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

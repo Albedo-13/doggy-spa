@@ -1,0 +1,16 @@
+@use '@/styles/colors' as *;
+@use '@/styles/variables' as *;
+
+.showcase {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.imageCollars {
+  border: 7px solid $pink_kisses;
+}
+
+.imageCarryOns {
+  border: 7px solid $bronzed_rose;
+}

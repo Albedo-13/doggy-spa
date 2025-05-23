@@ -1,0 +1,82 @@
+@use '@/styles/colors' as *;
+@use '@/styles/variables' as *;
+
+.footer {
+  background-color: $cream;
+}
+
+.footerWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 50px 20px 80px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.line {
+  border: none;
+  height: 12px;
+  background-color: $rosey_cheek;
+}
+
+.header {
+  font-size: $fs32;
+  margin-bottom: 30px;
+}
+
+.headerSocials {
+  margin-top: 60px;
+}
+
+.listItem {
+  font-weight: $fw400;
+  font-size: $fs26;
+  margin-top: 15px;
+}
+
+.socials {
+  display: flex;
+  gap: 60px;
+
+  .social {
+    display: block;
+    height: 29px;
+    width: auto;
+
+    .icon {
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+
+.copyright {
+  background-color: $rosey_cheek;
+  font-weight: $fw400;
+  font-size: $fs22;
+}
+
+.copyrightWrapper {
+  padding: 20px 15px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.copyrightText {
+  display: flex;
+  gap: 25px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 65px;
+}
+
+.input {
+  width: 450px;
+}

@@ -1,0 +1,9 @@
+@use '@/styles/colors' as *;
+@use '@/styles/variables' as *;
+
+.discount {
+  background-color: $cream;
+  text-align: center;
+  font-size: $fs26;
+  padding: 12px 20px;
+}

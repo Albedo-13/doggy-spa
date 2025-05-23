@@ -108,7 +108,7 @@
 При нажатии на кнопку "Book Appointment", которая отвечает за букинг, должно открывать модальное окно, где будет отображаться вся выбранная пользователем информация о времени, дате, комментарии и после успешного подтверждения данные сохраняется в LocalStorage.
 
 
-5. [Главная Spa Packages](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-15572&t=trQ4MSsKK7EV56dv-0>).
+5. [Главная Blog](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-15572&t=trQ4MSsKK7EV56dv-0>).
 
 
 6. [Главная About As](<https://www.figma.com/file/V2FX9rcQ2AUAuhrTSN3EwO/Modsen-Doggy-Spa?node-id=1-15255&t=trQ4MSsKK7EV56dv-0>)

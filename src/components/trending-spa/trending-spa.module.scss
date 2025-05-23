@@ -1,0 +1,46 @@
+@use '@/styles/colors' as *;
+@use '@/styles/variables' as *;
+
+.trendingSpa {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.title {
+  font-size: $fs66;
+  text-align: center;
+}
+
+.wrapper {
+  margin-top: 50px;
+  display: flex;
+  gap: 25px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-width: 550px;
+  border: 11px solid $rosey_cheek;
+}
+
+.content {
+  text-align: center;
+}
+
+.name {
+  font-size: $fs36;
+
+  span {
+    color: $black;
+  }
+}
+
+.description {
+  margin: 50px 0;
+  font-size: $fs22;
+  max-width: 650px;
+}
