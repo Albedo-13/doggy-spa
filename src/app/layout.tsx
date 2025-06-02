@@ -1,7 +1,9 @@
 import './globals.scss';
 
 import type { Metadata } from 'next';
-import { Cormorant, Tangerine } from 'next/font/google';
+import { Cinzel_Decorative, Cormorant, Tangerine } from 'next/font/google';
+
+import RootContext from './providers';
 
 const cormorantSans = Cormorant({
   variable: '--font-cormorant',
@@ -10,6 +12,12 @@ const cormorantSans = Cormorant({
 
 const tangerineSans = Tangerine({
   variable: '--font-tangerine',
+  subsets: ['latin'],
+  weight: ['400'],
+});
+
+const cinzelDecorative = Cinzel_Decorative({
+  variable: '--font-cinzel-decorative',
   subsets: ['latin'],
   weight: ['400'],
 });
@@ -27,10 +35,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${cormorantSans.variable} ${tangerineSans.variable} antialiased`}
+        className={`${cormorantSans.variable} ${tangerineSans.variable} ${cinzelDecorative.variable} antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <RootContext>{children}</RootContext>
         <div style={{ height: 200, backgroundColor: 'antiquewhite' }}></div>
       </body>
     </html>

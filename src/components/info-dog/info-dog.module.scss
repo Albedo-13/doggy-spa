@@ -1,4 +1,5 @@
 @use '@/styles/variables' as *;
+@use '@/styles/colors' as *;
 
 .infoDog {
   max-width: 1440px;
@@ -10,4 +11,53 @@
   text-align: center;
   text-transform: uppercase;
   font-size: $fs70;
+}
+
+.dog {
+  margin-top: 100px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-width: 750px;
+}
+
+.imageWrapper {
+  display: block;
+  background-color: $cream;
+  padding: 75px 0;
+  margin: 0 auto 100px auto;
+  text-align: center;
+}
+
+.dogName {
+  font-weight: $fw700;
+  font-size: $fs64;
+  color: $black;
+  margin-top: 25px;
+}
+
+.label {
+  font-weight: $fw400;
+  font-size: $fs40;
+  font-family: var(--font-tangerine);
+  margin-bottom: 12px;
+}
+
+.inputWrapper {
+  margin: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.param {
+  font-size: $fs40;
+  margin-bottom: 24px;
+
+  &:first-of-type {
+    color: $black;
+  }
 }

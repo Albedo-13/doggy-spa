@@ -9,7 +9,6 @@ type DogProps = {
 
 export default async function Dog({ params }: DogProps) {
   const { id } = await params;
-  console.log(id);
 
   return (
     <>
