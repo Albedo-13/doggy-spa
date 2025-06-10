@@ -2,26 +2,30 @@ import clsx from 'clsx';
 import { InputHTMLAttributes } from 'react';
 import { FieldError } from 'react-hook-form';
 
-import styles from './input.module.scss';
+import styles from './input-area.module.scss';
 
-type InputProps = {
+type InputAreaProps = {
   className?: string;
   classNameError?: string;
   block?: boolean;
   error?: FieldError;
 };
 
-export default function Input({
+export default function InputArea({
   className,
   classNameError,
   block = false,
   error,
   ...props
-}: InputHTMLAttributes<HTMLInputElement> & InputProps) {
+}: InputHTMLAttributes<HTMLTextAreaElement> & InputAreaProps) {
   return (
-    <div className={styles.inputWrapper} aria-description='input'>
-      <input
-        className={clsx(styles.input, block && styles.block, className || '')}
+    <div aria-description="textarea">
+      <textarea
+        className={clsx(
+          styles.inputArea,
+          block && styles.block,
+          className || ''
+        )}
         {...props}
       />
       {error && (

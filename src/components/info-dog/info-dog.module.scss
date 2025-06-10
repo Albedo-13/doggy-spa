@@ -17,6 +17,17 @@
   margin-top: 100px;
 }
 
+.notFound {
+  text-align: center;
+  font-size: $fs40;
+}
+
+.notFoundCode {
+  font-size: $fs70;
+  display: block;
+  color: $bronzed_rose;
+}
+
 .image {
   width: 100%;
   height: auto;

@@ -1,0 +1,60 @@
+@use '@/styles/variables' as *;
+@use '@/styles/colors' as *;
+
+.contactSpa {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 70px 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: $fs70;
+}
+
+.separator {
+  width: 50%;
+  min-width: 200px;
+  margin: 0 auto;
+  border: none;
+  height: 1px;
+  background-color: $black;
+
+  &:first-of-type {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+}
+
+.text {
+  text-align: center;
+  font-size: $fs30;
+}
+
+.email {
+  text-decoration: underline;
+  color: $pink_kisses;
+}
+
+.wrapper {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 60px;
+}
+
+.textarea {
+  margin-top: 60px;
+  height: 320px;
+}
+
+.submit {
+  display: block;
+  margin: 50px auto 0 auto;
+}
+
+@media (max-width: 769px) {
+  .wrapper {
+    grid-template-columns: auto;
+  }
+}

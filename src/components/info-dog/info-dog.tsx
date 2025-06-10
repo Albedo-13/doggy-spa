@@ -11,10 +11,10 @@ import { SEARCH_DOG } from '@/app/api/graphql/queries';
 import InputSearch from '@/lib/input-search/input-search';
 import Spinner from '@/lib/spinner/spinner';
 import { Dog } from '@/types/dog';
+import { searchDogSchema } from '@/utils/validation-schemas';
 
-import { DEBOUNCE_SEARCH_DELAY } from '../utils/constants';
+import { DEBOUNCE_SEARCH_DELAY } from '../../utils/constants';
 import styles from './info-dog.module.scss';
-import { searchSchema } from './validation-schema';
 
 type FormInputs = {
   searchDogName: string;
@@ -46,14 +46,17 @@ export default function InfoDog({ id = '' }: InfoDogProps) {
     watch,
     formState: { errors },
   } = useForm<FormInputs>({
-    resolver: yupResolver(searchSchema),
+    resolver: yupResolver(searchDogSchema),
   });
 
   const watchDogName = watch('searchDogName');
-  const [debouncedWatchDogName] = useDebounce(watchDogName, DEBOUNCE_SEARCH_DELAY);
+  const [debouncedWatchDogName] = useDebounce(
+    watchDogName,
+    DEBOUNCE_SEARCH_DELAY
+  );
 
   useEffect(() => {
-    if (searchSchema.isValidSync({ searchDogName: debouncedWatchDogName })) {
+    if (searchDogSchema.isValidSync({ searchDogName: debouncedWatchDogName })) {
       query({
         variables: { name: debouncedWatchDogName },
       });
@@ -96,6 +99,11 @@ export default function InfoDog({ id = '' }: InfoDogProps) {
       {isDogLoading && <Spinner size={100} />}
 
       <div className={styles.dog}>
+        {urlData?.dogs && !urlData.dogs.length && (
+          <div className={styles.notFound}>
+            <span className={styles.notFoundCode}>404</span> Dog not found :(
+          </div>
+        )}
         {urlData?.dogs && urlData.dogs.length > 0 && (
           <>
             <div className={styles.imageWrapper}>

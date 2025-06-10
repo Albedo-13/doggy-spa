@@ -29,7 +29,7 @@ export default function ModalSignUp() {
               <p className={styles.subtitle}>
                 Get 10% Off Your First Spa Treatment
               </p>
-              <SignUpForm />
+              <SignUpForm closeModal={closeModal} />
               <p className={styles.note}>
                 *By completing this form you are signing up to receive our
                 emails and can unsubscribe at any time.
