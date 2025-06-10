@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import emailjs from '@emailjs/browser';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useRef } from 'react';
-import { useForm } from 'react-hook-form';
+import emailjs from "@emailjs/browser";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
 
-import Button from '@/lib/button/button';
-import Input from '@/lib/input/input';
-import { subscribeSchema } from '@/utils/validation-schemas';
+import Button from "@/lib/button/button";
+import Input from "@/lib/input/input";
+import { subscribeSchema } from "@/utils/validation-schemas";
 
-import styles from './modal-sign-up.module.scss';
+import styles from "./modal-sign-up.module.scss";
 
 type FormInputs = {
   email: string;
@@ -43,7 +43,7 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
           emailData,
           {
             publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-          }
+          },
         )
         .then(() => {
           closeModal();
@@ -54,7 +54,7 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
   return (
     <form ref={form} onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <Input
-        {...register('email')}
+        {...register("email")}
         type="text"
         placeholder="Email"
         className={styles.input}
