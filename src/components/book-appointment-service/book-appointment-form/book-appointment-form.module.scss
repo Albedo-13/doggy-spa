@@ -1,0 +1,49 @@
+@use '@/styles/variables' as *;
+@use '@/styles/colors' as *;
+
+.bookAppointmentForm {
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 40px 60px;
+}
+
+.title {
+  margin: 65px 0 15px 0;
+  text-align: center;
+}
+
+.textarea {
+  height: 80px;
+}
+
+.gap {
+  margin-top: 40px;
+}
+
+.submit {
+  display: block;
+  margin: 35px auto 0 auto;
+}
+
+.note {
+  font-weight: $fw400;
+  font-size: $fs16;
+  text-align: center;
+  color: $charcoal;
+  margin-top: 20px;
+}
+
+.paymentGroup {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 769px) {
+  .wrapper {
+    grid-template-columns: auto;
+  }
+}

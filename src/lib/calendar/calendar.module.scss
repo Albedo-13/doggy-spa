@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+}
+
+.arrow {
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    color: #4c4c4b;
+  }
+}
+
+.calendarWrapper {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  color: #e89b93;
+  text-align: center;
+}
+
+.calendarItem {
+  opacity: 1;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px 0 8px 0;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  color: #ff0000;
+  padding: 20px 0 0 4px;
+  font-size: 20px;
+  position: absolute;
+}

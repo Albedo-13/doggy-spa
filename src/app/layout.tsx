@@ -24,7 +24,7 @@ const cinzelDecorative = Cinzel_Decorative({
 
 export const metadata: Metadata = {
   title: 'Doggy Spa',
-  description: 'Book your doggy spa appointment today!',
+  description: 'Book your doggy spa day!',
 };
 
 export default function RootLayout({

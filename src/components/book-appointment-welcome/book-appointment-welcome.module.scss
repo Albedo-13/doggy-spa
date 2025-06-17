@@ -1,0 +1,19 @@
+@use '@/styles/variables' as *;
+@use '@/styles/colors' as *;
+
+.bookAppointmentWelcome {
+  position: relative;
+  min-height: 680px;
+  padding: 100px 20px 50px 110px;
+}
+
+.image {
+  object-fit: cover;
+  z-index: -1;
+}
+
+.title {
+  font-size: $fs70;
+  color: $white;
+  max-width: 480px;
+}

@@ -7,6 +7,7 @@ import styles from './input-area.module.scss';
 type InputAreaProps = {
   className?: string;
   classNameError?: string;
+  classNameWrapper?: string;
   block?: boolean;
   error?: FieldError;
 };
@@ -14,12 +15,13 @@ type InputAreaProps = {
 export default function InputArea({
   className,
   classNameError,
+  classNameWrapper,
   block = false,
   error,
   ...props
 }: InputHTMLAttributes<HTMLTextAreaElement> & InputAreaProps) {
   return (
-    <div aria-description="textarea">
+    <div className={classNameWrapper} aria-description="textarea">
       <textarea
         className={clsx(
           styles.inputArea,
