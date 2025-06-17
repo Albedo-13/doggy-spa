@@ -78,7 +78,7 @@ export default function BookAppointmentForm() {
   };
 
   return (
-    <section className={styles.bookAppointmentForm}>
+    <section>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.wrapper}>
           <Input
