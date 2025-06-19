@@ -109,3 +109,10 @@
     display: none;
   }
 }
+
+@media (max-width: 769px) {
+  .modal {
+    padding: 40px 20px;
+    min-width: 250px;
+  }
+}

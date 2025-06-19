@@ -46,3 +46,30 @@
   font-size: $fs30;
   line-height: 170%;
 }
+
+@media (max-width: 1120px) {
+  .barkChronicles {
+    padding: 50px 20px;
+  }
+
+  .block {
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 50px;
+
+    &:nth-child(2n - 1) {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .title {
+    font-size: $fs36;
+  }
+
+  .description,
+  .text {
+    font-size: $fs22;
+  }
+}

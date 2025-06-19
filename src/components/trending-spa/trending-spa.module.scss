@@ -44,3 +44,13 @@
   font-size: $fs22;
   max-width: 650px;
 }
+
+@media (max-width: 1120px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: $fs40;
+  }
+}

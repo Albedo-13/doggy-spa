@@ -16,3 +16,15 @@
 .text {
   font-weight: 400;
 }
+
+@media (max-width: 769px) {
+  .map {
+    width: 300px;
+    height: 300px;
+  }
+
+  .content {
+    flex-direction: column;
+    padding-left: 20px;
+  }
+}

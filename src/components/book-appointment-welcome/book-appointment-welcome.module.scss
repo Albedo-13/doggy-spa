@@ -17,3 +17,23 @@
   color: $white;
   max-width: 480px;
 }
+
+@media (max-width: 769px) {
+  .bookAppointmentWelcome {
+    min-height: auto;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .title {
+    text-align: center;
+    font-size: $fs64;
+  }
+}
+
+@media (max-width: 420px) {
+  .title {
+    font-size: $fs40;
+  }
+}

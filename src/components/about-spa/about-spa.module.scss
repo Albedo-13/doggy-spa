@@ -43,3 +43,14 @@
   line-height: 170%;
   flex: 0 50%;
 }
+
+@media (max-width: 1120px) {
+  .aboutSpa {
+    padding: 50px 20px;
+  }
+
+  .block {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+}

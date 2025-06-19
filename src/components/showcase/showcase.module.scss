@@ -14,3 +14,13 @@
 .imageCarryOns {
   border: 7px solid $bronzed_rose;
 }
+
+@media (max-width: 769px) {
+  .imageCollars,
+  .imageCarryOns {
+    width: calc(100% - 14px);
+    height: 280px;
+    width: auto;
+    max-width: 420px;
+  }
+}

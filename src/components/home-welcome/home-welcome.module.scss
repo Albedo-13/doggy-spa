@@ -35,7 +35,10 @@
 
 .subtitle {
   font-size: $fs63;
-  text-shadow: -1px 1px $black, 1px 1px $black, 1px -1px $black,
+  text-shadow:
+    -1px 1px $black,
+    1px 1px $black,
+    1px -1px $black,
     -1px -1px $black;
 }
 
@@ -52,5 +55,15 @@
   .wrapper {
     flex-wrap: wrap;
     justify-content: center;
+  }
+}
+
+@media (max-width: 769px) {
+  .title {
+    font-size: $fs40;
+  }
+
+  .subtitle {
+    font-size: $fs36;
   }
 }

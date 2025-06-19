@@ -34,3 +34,21 @@
   display: block;
   margin: 50px auto;
 }
+
+@media (max-width: 769px) {
+  .description {
+    margin-top: 20px;
+  }
+
+  .button {
+    min-width: auto;
+  }
+
+  .title {
+    font-size: $fs40;
+  }
+
+  .item {
+    text-align: center;
+  }
+}

@@ -47,6 +47,7 @@
   font-size: $fs64;
   color: $black;
   margin-top: 25px;
+  padding: 0 20px;
 }
 
 .label {
@@ -70,5 +71,28 @@
 
   &:first-of-type {
     color: $black;
+  }
+}
+
+@media (max-width: 769px) {
+  .infoDog {
+    padding: 50px 20px;
+  }
+
+  .title {
+    font-size: $fs40;
+  }
+
+  .param {
+    font-size: $fs26;
+  }
+
+  .imageWrapper {
+    margin-bottom: 25px;
+    padding: 25px 0;
+  }
+
+  .dogName {
+    font-size: $fs40;
   }
 }
