@@ -1,19 +1,16 @@
-"use client";
+'use client';
 
-import emailjs from "@emailjs/browser";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useRef } from "react";
-import { useForm } from "react-hook-form";
+import emailjs from '@emailjs/browser';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useRef } from 'react';
+import { useForm } from 'react-hook-form';
 
-import Button from "@/lib/button/button";
-import Input from "@/lib/input/input";
-import { subscribeSchema } from "@/utils/validation-schemas";
+import Button from '@/lib/button/button';
+import Input from '@/lib/input/input';
+import { SignUpFormInputs } from '@/types/forms';
+import { subscribeSchema } from '@/utils/validation-schemas';
 
-import styles from "./modal-sign-up.module.scss";
-
-type FormInputs = {
-  email: string;
-};
+import styles from './modal-sign-up.module.scss';
 
 type SingUpFormProps = {
   closeModal: VoidFunction;
@@ -26,9 +23,11 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FormInputs>({ resolver: yupResolver(subscribeSchema) });
+  } = useForm<SignUpFormInputs>({
+    resolver: yupResolver(subscribeSchema),
+  });
 
-  const onSubmit = async (data: FormInputs) => {
+  const onSubmit = async (data: SignUpFormInputs) => {
     console.log(data);
 
     const emailData = {
@@ -54,7 +53,7 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
   return (
     <form ref={form} onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <Input
-        {...register("email")}
+        {...register('email')}
         type="text"
         placeholder="Email"
         className={styles.input}

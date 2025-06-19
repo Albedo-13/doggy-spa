@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 import { SIGN_UP_MODAL_SHOW_DELAY } from '@/utils/constants';

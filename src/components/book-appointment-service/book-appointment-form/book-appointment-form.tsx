@@ -6,11 +6,14 @@ import Image from 'next/image';
 import { ChangeEvent } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
+import ModalConfirmation from '@/components/modal-confirmation/modal-confirmation';
+import { useModal } from '@/hooks/use-modal';
 import Button from '@/lib/button/button';
 import Calendar from '@/lib/calendar/calendar';
 import CheckboxGroup from '@/lib/checkbox-group/checkbox-group';
 import Input from '@/lib/input/input';
 import InputArea from '@/lib/input-area/input-area';
+import { BookAppointmentFormInputs } from '@/types/forms';
 import { bookingSchema } from '@/utils/validation-schemas';
 
 import styles from './book-appointment-form.module.scss';
@@ -51,152 +54,155 @@ const BOOK_TIME = [
   { key: '4pm-5pm', value: '4 pm - 5pm' },
 ];
 
-type FormInputs = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  timeslots: string[];
-  calendar: Date;
-  comment: string;
-  cardNumber: string;
-  expiryDate: string;
-  cvv: string;
-  cardName: string;
-};
-
 export default function BookAppointmentForm() {
+  const {
+    isModalOpen: isModalConfirmationOpen,
+    openModal: openModalConfirmation,
+    closeModal: closeModalConfirmation,
+  } = useModal(false);
+
   const {
     control,
     register,
     handleSubmit,
+    getValues,
+    reset,
     formState: { errors, isSubmitting },
-  } = useForm<FormInputs>({ resolver: yupResolver(bookingSchema) });
+  } = useForm<BookAppointmentFormInputs>({
+    resolver: yupResolver(bookingSchema),
+  });
 
-  const onSubmit = async (data: FormInputs) => {
+  const onSubmit = async (data: BookAppointmentFormInputs) => {
     console.log(data);
+
+    openModalConfirmation();
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.wrapper}>
-          <Input
-            {...register('firstName')}
-            error={errors?.firstName}
-            block
-            placeholder="First Name"
-          />
-          <Input
-            {...register('lastName')}
-            error={errors?.lastName}
-            block
-            placeholder="Last Name"
-          />
-          <Input
-            {...register('email')}
-            type="email"
-            error={errors?.email}
-            block
-            placeholder="Email"
-          />
-          <Input
-            {...register('phone')}
-            error={errors?.phone}
-            block
-            placeholder="Phone number"
-          />
-          <Controller
-            control={control}
-            name="timeslots"
-            render={({ field: { onChange, value } }) => (
-              <CheckboxGroup
-                options={BOOK_TIME}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  const id = e.target.id;
-                  const currentValues = value || [];
+    <>
+      <section>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.wrapper}>
+            <Input
+              {...register('firstName')}
+              error={errors?.firstName}
+              block
+              placeholder="First Name"
+            />
+            <Input
+              {...register('lastName')}
+              error={errors?.lastName}
+              block
+              placeholder="Last Name"
+            />
+            <Input
+              {...register('email')}
+              type="email"
+              error={errors?.email}
+              block
+              placeholder="Email"
+            />
+            <Input
+              {...register('phone')}
+              error={errors?.phone}
+              block
+              placeholder="Phone number"
+            />
+            <Controller
+              control={control}
+              name="timeslots"
+              render={({ field: { onChange, value } }) => (
+                <CheckboxGroup
+                  options={BOOK_TIME}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    const id = e.target.id;
+                    const currentValues = value || [];
 
-                  if (e.target.checked) {
-                    onChange([...currentValues, id]);
-                  } else {
-                    onChange(
-                      currentValues.filter((item: string) => item !== id),
-                    );
-                  }
-                }}
-                label="Choose a timeslot"
-                error={errors?.timeslots}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="calendar"
-            render={({ field: { onChange } }) => (
-              <Calendar
-                onChange={onChange}
-                error={errors.calendar}
-              />
-            )}
-          />
-        </div>
-        <InputArea
-          {...register('comment')}
-          error={errors?.comment}
-          className={clsx(styles.textarea, styles.gap)}
-          block
-          placeholder="Your message goes here ..."
-        />
-
-        <h2 className={styles.title}>Enter your payment information</h2>
-        <Input
-          {...register('cardNumber')}
-          error={errors?.cardNumber}
-          block
-          placeholder="Credit Card Number"
-        />
-        <div className={styles.wrapper}>
-          <Input
-            {...register('expiryDate')}
-            error={errors?.expiryDate}
+                    if (e.target.checked) {
+                      onChange([...currentValues, id]);
+                    } else {
+                      onChange(
+                        currentValues.filter((item: string) => item !== id),
+                      );
+                    }
+                  }}
+                  label="Choose a timeslot"
+                  error={errors?.timeslots}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="calendar"
+              render={({ field: { onChange } }) => (
+                <Calendar onChange={onChange} error={errors.calendar} />
+              )}
+            />
+          </div>
+          <InputArea
+            {...register('comment')}
+            error={errors?.comment}
+            className={clsx(styles.textarea, styles.gap)}
             block
-            placeholder="Expiry Date"
-            classNameWrapper={styles.gap}
+            placeholder="Your message goes here ..."
           />
-          <Input
-            {...register('cvv')}
-            error={errors?.cvv}
-            block
-            placeholder="CVV"
-            classNameWrapper={styles.gap}
-          />
-        </div>
-        <Input
-          {...register('cardName')}
-          error={errors?.cardName}
-          block
-          placeholder="Name on Card"
-          className={styles.gap}
-        />
-        <div className={clsx(styles.paymentGroup, styles.gap)}>
-          {PAYMENT_METHODS.map(({ id, src, alt }) => (
-            <Image key={id} src={src} alt={alt} width={34} height={24} />
-          ))}
-        </div>
-        <p className={styles.note}>
-          Please be advised cancelling within 24 hours of your scheduled
-          appointment will result in a cancellation fee of $300.00.
-        </p>
 
-        <Button
-          className={styles.submit}
-          disabled={isSubmitting}
-          type="submit"
-          size="large"
-        >
-          Book Appointment
-        </Button>
-      </form>
-    </section>
+          <h2 className={styles.title}>Enter your payment information</h2>
+          <Input
+            {...register('cardNumber')}
+            error={errors?.cardNumber}
+            block
+            placeholder="Credit Card Number"
+          />
+          <div className={styles.wrapper}>
+            <Input
+              {...register('expiryDate')}
+              error={errors?.expiryDate}
+              block
+              placeholder="Expiry Date"
+              classNameWrapper={styles.gap}
+            />
+            <Input
+              {...register('cvv')}
+              error={errors?.cvv}
+              block
+              placeholder="CVV"
+              classNameWrapper={styles.gap}
+            />
+          </div>
+          <Input
+            {...register('cardName')}
+            error={errors?.cardName}
+            block
+            placeholder="Name on Card"
+            className={styles.gap}
+          />
+          <div className={clsx(styles.paymentGroup, styles.gap)}>
+            {PAYMENT_METHODS.map(({ id, src, alt }) => (
+              <Image key={id} src={src} alt={alt} width={34} height={24} />
+            ))}
+          </div>
+          <p className={styles.note}>
+            Please be advised cancelling within 24 hours of your scheduled
+            appointment will result in a cancellation fee of $300.00.
+          </p>
+
+          <Button
+            className={styles.submit}
+            disabled={isSubmitting}
+            type="submit"
+            size="large"
+          >
+            Book Appointment
+          </Button>
+        </form>
+      </section>
+      <ModalConfirmation
+        isModalOpen={isModalConfirmationOpen}
+        closeModal={closeModalConfirmation}
+        data={getValues()}
+        reset={reset}
+      />
+    </>
   );
 }

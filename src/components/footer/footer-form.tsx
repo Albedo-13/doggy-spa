@@ -7,13 +7,10 @@ import { useForm } from 'react-hook-form';
 
 import Button from '@/lib/button/button';
 import Input from '@/lib/input/input';
+import { SignUpFormInputs } from '@/types/forms';
 import { subscribeSchema } from '@/utils/validation-schemas';
 
 import styles from './footer.module.scss';
-
-type FormInputs = {
-  email: string;
-};
 
 export default function FooterForm() {
   const form = useRef(null);
@@ -23,9 +20,9 @@ export default function FooterForm() {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<FormInputs>({ resolver: yupResolver(subscribeSchema) });
+  } = useForm<SignUpFormInputs>({ resolver: yupResolver(subscribeSchema) });
 
-  const onSubmit = async (data: FormInputs) => {
+  const onSubmit = async (data: SignUpFormInputs) => {
     const emailData = {
       email: data.email,
     };

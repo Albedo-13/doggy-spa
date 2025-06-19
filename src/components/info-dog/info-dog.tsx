@@ -11,14 +11,12 @@ import { SEARCH_DOG } from '@/app/api/graphql/queries';
 import InputSearch from '@/lib/input-search/input-search';
 import Spinner from '@/lib/spinner/spinner';
 import { Dog } from '@/types/dog';
+import { InfoDogFormInputs } from '@/types/forms';
 import { searchDogSchema } from '@/utils/validation-schemas';
 
 import { DEBOUNCE_SEARCH_DELAY } from '../../utils/constants';
 import styles from './info-dog.module.scss';
 
-type FormInputs = {
-  searchDogName: string;
-};
 
 type InfoDogProps = {
   id?: string;
@@ -45,7 +43,7 @@ export default function InfoDog({ id = '' }: InfoDogProps) {
     register,
     watch,
     formState: { errors },
-  } = useForm<FormInputs>({
+  } = useForm<InfoDogFormInputs>({
     resolver: yupResolver(searchDogSchema),
   });
 
