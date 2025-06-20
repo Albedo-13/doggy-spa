@@ -82,7 +82,7 @@
   width: 450px;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: $notebook) {
   .footerWrapper {
     flex-direction: column;
     align-items: center;
@@ -111,7 +111,7 @@
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: $tablet) {
   .socials {
     gap: 15px;
 

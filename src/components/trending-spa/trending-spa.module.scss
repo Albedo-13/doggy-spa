@@ -45,7 +45,7 @@
   max-width: 650px;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: $notebook) {
   .wrapper {
     flex-direction: column;
   }

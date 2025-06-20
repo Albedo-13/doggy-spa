@@ -42,8 +42,7 @@
     -1px -1px $black;
 }
 
-// TODO: все media к константам
-@media (max-width: 1120px) {
+@media (max-width: $notebook) {
   .homeWelcome {
     padding-top: 20px;
   }
@@ -58,7 +57,7 @@
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: $tablet) {
   .title {
     font-size: $fs40;
   }

@@ -44,7 +44,7 @@
   flex: 0 50%;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: $notebook) {
   .aboutSpa {
     padding: 50px 20px;
   }

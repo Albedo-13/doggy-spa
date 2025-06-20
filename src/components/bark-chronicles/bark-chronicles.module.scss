@@ -47,7 +47,7 @@
   line-height: 170%;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: $notebook) {
   .barkChronicles {
     padding: 50px 20px;
   }
@@ -63,7 +63,7 @@
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: $tablet) {
   .title {
     font-size: $fs36;
   }

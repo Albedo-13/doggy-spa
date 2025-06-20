@@ -1,3 +1,5 @@
+@use '@/styles/variables' as *;
+
 .map {
   width: 500px;
   height: 500px;
@@ -17,7 +19,7 @@
   font-weight: 400;
 }
 
-@media (max-width: 769px) {
+@media (max-width: $tablet) {
   .map {
     width: 300px;
     height: 300px;

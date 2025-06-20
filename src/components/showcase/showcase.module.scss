@@ -15,7 +15,7 @@
   border: 7px solid $bronzed_rose;
 }
 
-@media (max-width: 769px) {
+@media (max-width: $tablet) {
   .imageCollars,
   .imageCarryOns {
     width: calc(100% - 14px);

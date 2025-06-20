@@ -74,7 +74,7 @@
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: $tablet) {
   .infoDog {
     padding: 50px 20px;
   }
