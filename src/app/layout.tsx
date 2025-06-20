@@ -39,7 +39,6 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <RootContext>{children}</RootContext>
-        <div style={{ height: 200, backgroundColor: 'antiquewhite' }}></div>
       </body>
     </html>
   );
