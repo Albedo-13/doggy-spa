@@ -14,7 +14,6 @@ export const resolvers = {
           },
         }
       );
-
       if (!response.ok) {
         throw new Error(`API Error: ${response.statusText}`);
       }
