@@ -28,8 +28,6 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
   });
 
   const onSubmit = async (data: SignUpFormInputs) => {
-    console.log(data);
-
     const emailData = {
       email: data.email,
     };
