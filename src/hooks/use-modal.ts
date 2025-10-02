@@ -29,7 +29,10 @@ export const useModal = (isOpenWithDelay = false) => {
         openModal();
       }, SIGN_UP_MODAL_SHOW_DELAY);
 
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        shouldDisableScroll(false);
+      };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
