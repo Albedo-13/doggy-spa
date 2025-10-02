@@ -1,2 +1,2 @@
 export const DEBOUNCE_SEARCH_DELAY = 700;
-export const SIGN_UP_MODAL_SHOW_DELAY = 1000;
+export const SIGN_UP_MODAL_SHOW_DELAY = 10000;
