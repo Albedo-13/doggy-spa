@@ -5,7 +5,7 @@ import {
   cvvRegExp,
   expiryDateRegExp,
   phoneRegExp,
-} from './regexps';
+} from './regexps/regexps';
 
 export const contactUsSchema = yup.object({
   firstName: yup.string().required("Field 'First Name' is required"),

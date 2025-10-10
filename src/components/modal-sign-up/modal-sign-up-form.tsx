@@ -49,7 +49,12 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
   };
 
   return (
-    <form ref={form} onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form
+      data-testid="modal-sign-up-form"
+      ref={form}
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.form}
+    >
       <Input
         {...register('email')}
         type="text"

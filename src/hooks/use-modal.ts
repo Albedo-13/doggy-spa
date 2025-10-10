@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { SIGN_UP_MODAL_SHOW_DELAY } from '@/utils/constants';
-import { shouldDisableScroll } from '@/utils/should-disable-scroll';
+import { shouldDisableScroll } from '@/utils/should-disable-scroll/should-disable-scroll';
 
 /**
  * Custom hook for managing modal state and functionality.
