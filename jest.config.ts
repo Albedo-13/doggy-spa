@@ -139,10 +139,10 @@ const config: Config = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  setupFiles: ['<rootDir>/.env'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ["<rootDir>/src/mocks/msw/jest.setup.ts"],
+  setupFilesAfterEnv: ['<rootDir>/src/mocks/msw/jest.setup.ts'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -179,7 +179,7 @@ const config: Config = {
   // This option allows use of a custom test runner
   // testRunner: "jest-circus/runner",
 
-  extensionsToTreatAsEsm: ['.ts', '.tsx', '.jsx'],
+  extensionsToTreatAsEsm: ['.ts', '.tsx'],
   // globals: {
   //   'ts-jest': {
   //     useESM: true,
@@ -189,10 +189,13 @@ const config: Config = {
   // A map from regular expressions to paths to transformers
   transform: {
     'node_modules/variables/.+\\.(j|t)sx?$': 'ts-jest',
-    '^.+\\.(ts|tsx)$': ['ts-jest', {
-      tsconfig: 'tsconfig.test.json',
-      useESM: true,
-    }],
+    '^.+\\.(ts|tsx)$': [
+      'ts-jest',
+      {
+        tsconfig: 'tsconfig.test.json',
+        useESM: true,
+      },
+    ],
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation

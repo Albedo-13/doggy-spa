@@ -1,5 +1,7 @@
 import '@testing-library/jest-dom';
 
+import nextEnv from '@next/env';
+
 import { server } from './server';
 
 // Establish API mocking before all tests.
@@ -14,3 +16,5 @@ afterAll(() => server.close());
 if (process.env.NODE_ENV === 'development') {
   import('./browser').then(({ worker }) => worker.start());
 }
+
+nextEnv.loadEnvConfig(process.cwd());
