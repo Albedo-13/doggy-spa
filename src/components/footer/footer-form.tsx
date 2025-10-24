@@ -35,7 +35,7 @@ export default function FooterForm() {
           emailData,
           {
             publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-          }
+          },
         )
         .then(() => {
           reset();
@@ -43,7 +43,12 @@ export default function FooterForm() {
     }
   };
   return (
-    <form ref={form} onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form
+      ref={form}
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.form}
+      data-testid="footer-form"
+    >
       <Input
         {...register('email')}
         error={errors.email}

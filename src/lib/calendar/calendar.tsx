@@ -1,96 +1,28 @@
 import { useState } from 'react';
 import { FieldError } from 'react-hook-form';
 
+import { DAYS_OF_WEEK } from '@/utils/constants';
+
 import styles from './calendar.module.scss';
+import {
+  addMonths,
+  formatDate,
+  getDaysArray,
+  getInitialCurrentDate,
+  isPast,
+  isSunday,
+  subMonths,
+} from './calendar.utils';
 
 type InputProps = {
   onChange: (value: Date) => void;
   error?: FieldError;
 };
 
-const getDaysInMonth = (date: Date) => {
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  return new Date(year, month + 1, 0).getDate();
-};
-
-const addMonths = (date: Date, months: number) => {
-  const newDate = new Date(date);
-  newDate.setMonth(date.getMonth() + months);
-  return newDate;
-};
-
-const subMonths = (date: Date, months: number) => {
-  const newDate = new Date(date);
-  newDate.setMonth(date.getMonth() - months);
-  return newDate;
-};
-
-const isSunday = (date: Date) => {
-  return date.getDay() === 0;
-};
-
-const isPast = (date: Date) => {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return date < today;
-};
-
-const formatDate = (date: Date, format: string) => {
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
-  if (format === 'MMMM yyyy') {
-    return `${months[date.getMonth()]} ${date.getFullYear()}`;
-  }
-  if (format === 'd') {
-    return date.getDate().toString();
-  }
-  return date.toString();
-};
-
-const getDaysArray = (date: Date) => {
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const firstDay = new Date(year, month, 1);
-  const startingDay = firstDay.getDay() || 7; // Convert Sunday (0) to 7
-  const daysInMonth = getDaysInMonth(date);
-  const days: Date[] = [];
-
-  // Add empty days for padding before the first day
-  for (let i = 1; i < startingDay; i++) {
-    const prevDate = new Date(year, month, 1 - i);
-    days.unshift(prevDate);
-  }
-
-  // Add actual days of the month
-  for (let i = 1; i <= daysInMonth; i++) {
-    days.push(new Date(year, month, i));
-  }
-
-  // Add remaining days to complete the grid
-  const remainingDays = 42 - days.length; // 6 rows * 7 columns
-  for (let i = 1; i <= remainingDays; i++) {
-    days.push(new Date(year, month + 1, i));
-  }
-
-  return days;
-};
-
 export default function Calendar({ onChange, error }: InputProps) {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(() =>
+    getInitialCurrentDate(new Date()),
+  );
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const days = getDaysArray(currentDate);
@@ -119,26 +51,30 @@ export default function Calendar({ onChange, error }: InputProps) {
   };
 
   return (
-    <div aria-description="calendar">
-      <div className={styles.header}>
+    <div aria-description="calendar" data-testid="calendar">
+      <div className={styles.header} data-testid="calendar-header">
         <button
           className={styles.arrow}
           type="button"
           onClick={handlePrevMonth}
+          data-testid="calendar-prev-month"
+          aria-label='previous month'
         >
           {'<'}
         </button>
-        <span>{formatDate(currentDate, 'MMMM yyyy')}</span>
+        <span data-testid='calendar-month-year'>{String(formatDate(currentDate, 'MMMM yyyy'))}</span>
         <button
           className={styles.arrow}
           type="button"
           onClick={handleNextMonth}
+          data-testid="calendar-next-month"
+          aria-label='next month'
         >
           {'>'}
         </button>
       </div>
       <div className={styles.calendarWrapper}>
-        {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => (
+        {DAYS_OF_WEEK.map((day) => (
           <div key={day}>{day}</div>
         ))}
         {days.map((day) => (
@@ -156,8 +92,9 @@ export default function Calendar({ onChange, error }: InputProps) {
                   ? '#e89b93'
                   : 'transparent',
             }}
+            data-testid='calendar-date'
           >
-            {formatDate(day, 'd')}
+            {String(formatDate(day, 'd'))}
           </button>
         ))}
       </div>

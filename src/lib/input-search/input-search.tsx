@@ -41,18 +41,24 @@ export default function InputSearch({
         }}
       />
       {isEmptyResults && (
-        <div className={styles.options}>
+        <div
+          className={styles.options}
+          data-testid="input-search-empty-options"
+        >
           <div className={styles.option}>No results</div>
         </div>
       )}
       {isLoading && (
-        <div className={styles.options}>
+        <div
+          className={styles.options}
+          data-testid="input-search-loading-options"
+        >
           <div className={styles.option}>Loading...</div>
         </div>
       )}
       {isResultsFound && (
-        <div className={styles.options}>
-          {(options || []).map((option) => (
+        <div className={styles.options} data-testid="input-search-show-options">
+          {options.map((option) => (
             <a
               key={option[linkPropName as keyof typeof option]}
               className={styles.option}

@@ -7,7 +7,7 @@ type SpinnerProps = {
 
 export default function Spinner({ size = 50 }: SpinnerProps) {
   return (
-    <div className={styles.spinner}>
+    <div data-testid="spinner" className={styles.spinner}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

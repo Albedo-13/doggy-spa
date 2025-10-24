@@ -1,20 +1,17 @@
-import { jest } from '@jest/globals';
-import { render, renderHook, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { useModal } from '@/hooks/use-modal';
+import FooterForm from './footer-form';
 
-import SignUpForm from './modal-sign-up-form';
-
-describe('Modal sign up form', () => {
+describe('Footer sign up form', () => {
   test('Should be rendered', () => {
-    render(<SignUpForm closeModal={jest.fn()} />);
+    render(<FooterForm />);
 
-    expect(screen.getByTestId('modal-sign-up-form')).toBeInTheDocument();
+    expect(screen.getByTestId('footer-form')).toBeInTheDocument();
   });
 
-  test('Should show error message on wrong email', async () => {
-    render(<SignUpForm closeModal={jest.fn()} />);
+  test('Should show error on wrong email', async () => {
+    render(<FooterForm />);
 
     await userEvent.type(screen.getByPlaceholderText('Email'), 'wrong email');
     await userEvent.click(screen.getByRole('button'));
@@ -23,12 +20,8 @@ describe('Modal sign up form', () => {
     expect(errorMessage).toBeInTheDocument();
   });
 
-  test('Should call emailjs & closeModal on valid submit', async () => {
-    const modalHook = renderHook(() => useModal(true)).result;
-    const closeModalMock = jest.fn(modalHook.current.closeModal);
-
-    // modal is always open if SignUpForm rendered
-    render(<SignUpForm closeModal={closeModalMock} />);
+  test('Should call emailjs on valid submit', async () => {
+    render(<FooterForm />);
 
     await userEvent.type(
       screen.getByPlaceholderText('Email'),
@@ -46,6 +39,5 @@ describe('Modal sign up form', () => {
     );
     expect(response.text()).resolves.toBe('OK');
     expect(response.status).toBe(200);
-    expect(closeModalMock).toHaveBeenCalled();
   });
 });
