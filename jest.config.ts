@@ -95,6 +95,8 @@ const config: Config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(scss|css)$': '<rootDir>/src/mocks/style-mock.js',
+    '^next/image$': '<rootDir>/src/mocks/image-mock.js',
+    '^@apollo/client$': '<rootDir>/node_modules/@apollo/client/index.js',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

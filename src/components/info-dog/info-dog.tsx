@@ -26,7 +26,8 @@ export default function InfoDog({ id = '' }: InfoDogProps) {
   const { data: urlData, loading: isDogLoading } = useQuery<{ dogs: Dog[] }>(
     SEARCH_DOG,
     {
-      variables: { name: id[0] },
+      variables: { name: id },
+      skip: !id,
     },
   );
 
@@ -35,7 +36,7 @@ export default function InfoDog({ id = '' }: InfoDogProps) {
     useLazyQuery<{
       dogs: Dog[];
     }>(SEARCH_DOG, {
-      variables: { name: id[0] },
+      variables: { name: id },
     });
 
   const {

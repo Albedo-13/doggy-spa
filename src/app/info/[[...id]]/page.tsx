@@ -21,7 +21,7 @@ export default async function Info({ params }: InfoProps) {
     <>
       <Header />
       <Discount />
-      <InfoDog id={id} />
+      <InfoDog id={id[0]} />
       <Footer />
     </>
   );
