@@ -22,6 +22,7 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<SignUpFormInputs>({
     resolver: yupResolver(subscribeSchema),
@@ -43,6 +44,7 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
           },
         )
         .then(() => {
+          reset();
           closeModal();
         });
     }

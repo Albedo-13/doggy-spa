@@ -11,7 +11,7 @@ export const handlers = [
     });
   }),
   graphql.link('/api/graphql').query('SearchDog', async ({ variables }) => {
-    console.log('Catch & mock "search":', variables);
+    // console.log('Catch & mock "search":', variables);
 
     const { name } = variables as { name?: string };
     const list = [

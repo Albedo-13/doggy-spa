@@ -32,7 +32,7 @@ describe('Info dog component (search dogs)', () => {
     expect(screen.getByText('Good with Other Dogs: 3')).toBeInTheDocument();
   });
 
-  test('Should change input & sorts correctly', async () => {
+  test('Should change input & filters data correctly', async () => {
     render(
       <ApolloProvider client={client}>
         <InfoDog id="Broholmer" />
@@ -48,7 +48,7 @@ describe('Info dog component (search dogs)', () => {
     expect(searchResults).toHaveLength(1);
   });
 
-  test('Should show 404 not found if id is not valid', async () => {
+  test('Should show "404 not found" if id is not valid', async () => {
     render(
       <ApolloProvider client={client}>
         <InfoDog id="some random dog name that doesn't exist" />

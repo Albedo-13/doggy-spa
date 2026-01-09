@@ -39,6 +39,9 @@ describe('Modal sign up form', () => {
     const errorMessage = screen.queryByText('email must be a valid email');
     expect(errorMessage).not.toBeInTheDocument();
 
+    // empty means that form is submitted and cleared successfully
+    expect(await screen.findByPlaceholderText('Email')).toHaveValue('');
+
     // request on form submit
     const response = await fetch(
       'https://api.emailjs.com/api/v1.0/email/send',

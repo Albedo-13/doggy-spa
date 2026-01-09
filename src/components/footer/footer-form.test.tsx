@@ -23,14 +23,14 @@ describe('Footer sign up form', () => {
   test('Should call emailjs on valid submit', async () => {
     render(<FooterForm />);
 
-    await userEvent.type(
-      screen.getByPlaceholderText('Email'),
-      'valid@email.com',
-    );
+    await userEvent.type(screen.getByPlaceholderText('Email'), 'valid@email.com');
     await userEvent.click(screen.getByRole('button'));
 
     const errorMessage = screen.queryByText('email must be a valid email');
     expect(errorMessage).not.toBeInTheDocument();
+
+    // empty means that form is submitted and cleared successfully
+    expect(await screen.findByPlaceholderText('Email')).toHaveValue('');
 
     // request on form submit
     const response = await fetch(
