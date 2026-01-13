@@ -1,14 +1,29 @@
 import { expect, test } from '@playwright/test';
 
-// TODO: мокнуть запросы
+import { server } from '@/mocks/msw/server';
+
+server.listen();
 
 test.beforeEach(async ({ page }) => {
+  await page.route(
+    'https://api.emailjs.com/api/v1.0/email/send',
+    async (route) => {
+      const request = route.request();
+      if (request.method() === 'POST') {
+        await route.fulfill({
+          status: 200,
+          json: 'OK',
+        });
+      } else {
+        await route.continue();
+      }
+    },
+  );
+
   await page.goto('http://localhost:3000/contact-us');
 });
 
-test('Should successfully submit the form', async ({
-  page,
-}) => {
+test('Should successfully submit the form', async ({ page }) => {
   const firstName = page.getByPlaceholder('First Name');
   await firstName.fill('John');
 
@@ -38,5 +53,11 @@ test('Should show errors on wrong inputs', async ({ page }) => {
   await expect(page.getByText("Field 'First Name' is required")).toBeVisible();
   await expect(page.getByText("Field 'Last Name' is required")).toBeVisible();
   await expect(page.getByText("Field 'Email' is required")).toBeVisible();
-  await expect(page.getByText("Field must be correct phone number")).toBeVisible();
+  await expect(
+    page.getByText('Field must be correct phone number'),
+  ).toBeVisible();
+});
+
+test.afterAll(() => {
+  server.close();
 });
