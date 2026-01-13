@@ -9,6 +9,9 @@
     "lint": "next lint && eslint --fix",
     "prepare": "husky",
     "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
+    "e2e:run": "npx playwright test",
+    "e2e:ui": "npx playwright test --ui",
+    "e2e:report": "npx playwright show-report",
     "coverage": "set NODE_OPTIONS=--experimental-vm-modules && jest --coverage"
   },
   "dependencies": {
@@ -36,6 +39,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.57.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",

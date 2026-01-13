@@ -66,6 +66,7 @@ export default function ModalConfirmation({
             type="button"
             size="small"
             onClick={onBookClick}
+            data-testid="book-now-submit-form"
           >
             Book now
           </Button>
