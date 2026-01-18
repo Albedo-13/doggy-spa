@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test('Contact us page visual regression', async ({ page }) => {
-  await page.goto('http://localhost:3000/contact-us');
+  await page.goto('/contact-us');
   
   const firstName = page.getByPlaceholder('First Name');
   await firstName.fill('John');

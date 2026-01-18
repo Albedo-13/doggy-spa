@@ -52,7 +52,7 @@ test.beforeEach(async ({ page }) => {
     return route.continue();
   });
 
-  await page.goto('http://localhost:3000/info');
+  await page.goto('/info');
 });
 
 test('Info page default visual regression', async ({ page }) => {
@@ -65,7 +65,7 @@ test('Info page default visual regression', async ({ page }) => {
 });
 
 test('Info page 404 visual regression', async ({ page }) => {
-  await page.goto('http://localhost:3000/info/some-unexisting-dog');
+  await page.goto('/info/some-unexisting-dog');
   await page.waitForLoadState('networkidle');
 
   await expect(page).toHaveScreenshot('info-404-fullpage.png', {

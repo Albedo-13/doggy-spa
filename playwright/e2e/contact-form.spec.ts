@@ -20,7 +20,7 @@ test.beforeEach(async ({ page }) => {
     },
   );
 
-  await page.goto('http://localhost:3000/contact-us');
+  await page.goto('/contact-us');
 });
 
 test('Should successfully submit the form', async ({ page }) => {

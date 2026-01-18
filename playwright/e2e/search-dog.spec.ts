@@ -52,7 +52,7 @@ test.beforeEach(async ({ page }) => {
     return route.continue();
   });
 
-  await page.goto('http://localhost:3000/info');
+  await page.goto('/info');
 });
 
 test('Should search and redirect to dog page on text input', async ({
@@ -83,7 +83,7 @@ test('Should show "No results" on wrong search', async ({ page }) => {
 });
 
 test('Should show 404 on invalid redirect', async ({ page }) => {
-  await page.goto('http://localhost:3000/info/some-unexisting-dog');
+  await page.goto('/info/some-unexisting-dog');
 
   const errCode = await page.getByText('404');
   const notFoundText = await page.getByText('Dog not found :(');
