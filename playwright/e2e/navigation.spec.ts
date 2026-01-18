@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
+  await page.waitForLoadState('networkidle');
 });
 
 test('Should redirect to all available pages', async ({ page }) => {

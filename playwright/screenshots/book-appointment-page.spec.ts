@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test('Book appointment page visual regression', async ({ page }) => {
   await page.goto('/book-appointment');
+  await page.waitForLoadState('networkidle');
 
   const firstName = page.getByPlaceholder('First Name');
   await firstName.fill('John');

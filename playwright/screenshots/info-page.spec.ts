@@ -53,6 +53,7 @@ test.beforeEach(async ({ page }) => {
   });
 
   await page.goto('/info');
+  await page.waitForLoadState('networkidle');
 });
 
 test('Info page default visual regression', async ({ page }) => {

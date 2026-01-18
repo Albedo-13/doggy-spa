@@ -53,6 +53,7 @@ test.beforeEach(async ({ page }) => {
   });
 
   await page.goto('/info');
+  await page.waitForLoadState('networkidle');
 });
 
 test('Should search and redirect to dog page on text input', async ({
@@ -84,6 +85,7 @@ test('Should show "No results" on wrong search', async ({ page }) => {
 
 test('Should show 404 on invalid redirect', async ({ page }) => {
   await page.goto('/info/some-unexisting-dog');
+  await page.waitForLoadState('networkidle');
 
   const errCode = await page.getByText('404');
   const notFoundText = await page.getByText('Dog not found :(');

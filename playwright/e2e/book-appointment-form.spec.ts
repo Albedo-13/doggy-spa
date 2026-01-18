@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/book-appointment');
+  await page.waitForLoadState('networkidle');
 });
 
 test('Should successfully submit the form', async ({ page }) => {
