@@ -1,0 +1,42 @@
+name: Tests with Allure Report
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  pull-requests: write
+  checks: write
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Setup your language/runtime
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Run tests (must use Allure reporter)
+      - name: Run tests and generate report
+        run: npx allure run -- npm run test
+        # This generates allure-results/ directory and creates allure-report/ with summary.json
+
+      # 5. Post summary to PR
+      - name: Run Allure Action
+        uses: allure-framework/allure-action@v0
+        with:
+          report-directory: './allure-report'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
