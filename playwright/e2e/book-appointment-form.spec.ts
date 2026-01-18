@@ -50,6 +50,7 @@ test('Should successfully submit the form', async ({ page }) => {
   const bookButton = page.getByTestId('book-now-submit-form');
   await bookButton.click();
 
+  // empty form means successfull submit
   await expect(firstName).toHaveValue('');
   await expect(lastName).toHaveValue('');
   await expect(email).toHaveValue('');
