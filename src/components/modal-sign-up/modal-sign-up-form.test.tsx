@@ -34,7 +34,12 @@ describe('Modal sign up form', () => {
       screen.getByPlaceholderText('Email'),
       'valid@email.com',
     );
-    expect(await screen.getByPlaceholderText('Email')).toHaveValue('valid@email.com');
+    expect(await screen.getByPlaceholderText('Email')).toHaveValue(
+      'valid@email.com',
+    );
+
+    screen.debug();
+
     await userEvent.click(screen.getByRole('button'));
 
     const errorMessage = screen.queryByText('email must be a valid email');
