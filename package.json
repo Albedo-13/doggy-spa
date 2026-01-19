@@ -8,12 +8,12 @@
     "start": "next start",
     "lint": "next lint && eslint --fix",
     "prepare": "husky",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "jest": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "pw": "npx playwright test",
     "pw:ui": "npx playwright test --ui",
     "pw:report": "npx playwright show-report",
-    "allure": "allure serve allure-results",
-    "coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+    "allure": "npx allure run -- npm run jest && npx allure run -- npm run pw",
+    "allure:serve": "allure serve allure-results"
   },
   "dependencies": {
     "@apollo/client": "3.13.8",
