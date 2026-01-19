@@ -39,8 +39,15 @@ describe('Modal sign up form', () => {
     const errorMessage = screen.queryByText('email must be a valid email');
     expect(errorMessage).not.toBeInTheDocument();
 
+    console.log('!1', process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID);
+    console.log('!2', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+    console.log('!3', process.env.NEXT_PUBLIC_EMAILJS_SUBSCRIPTION_ID_TEMPLATE);
+    console.log('!4', process.env.NEXT_PUBLIC_EMAILJS_BOOKING_ID_TEMPLATE);
+
+    screen.debug();
+
     // empty means that form is submitted and cleared successfully
-    await expect(await screen.findByPlaceholderText('Email')).toHaveValue('');
+    expect(await screen.findByPlaceholderText('Email')).toHaveValue('');
 
     // request on form submit
     // const response = await fetch(
