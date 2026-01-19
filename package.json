@@ -12,7 +12,7 @@
     "pw": "npx playwright test",
     "pw:ui": "npx playwright test --ui",
     "pw:report": "npx playwright show-report",
-    "allure": "npx allure run -- npm run jest && npx allure run -- npm run pw",
+    "allure": "npx allure run -- npm run jest",
     "allure:serve": "allure serve allure-results"
   },
   "dependencies": {

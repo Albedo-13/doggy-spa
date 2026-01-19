@@ -30,9 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 3.2. Install Playwright Browsers
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      # # 3.2. Install Playwright Browsers
+      # - name: Install Playwright Browsers
+      #   run: npx playwright install --with-deps
 
       # 3.3. add env variables
       - name: Export env
@@ -51,8 +51,9 @@ jobs:
           CI: true
         run: npm run allure
         # run: npx allure run -- npm run test
+        # // "allure": "npx allure run -- npm run jest && npx allure run -- npm run pw",
 
-        # This generates allure-results/ directory and creates allure-report/ with summary.json
+      # This generates allure-results/ directory and creates allure-report/ with summary.json
 
       # 5. Post summary to PR
       - name: Run Allure Action
