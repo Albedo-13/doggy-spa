@@ -17,28 +17,28 @@ import {
 
 describe('Calendar utils', () => {
   const octStart = new Date('Wed Oct 1 2025 00:00:00');
-  const octEnd = new Date('Wed Oct 31 2025 23:59:59 GMT+0300');
-  const nov = new Date('Wed Nov 23 2025 12:00:00 GMT+0300');
-  const feb28 = new Date('Wed Feb 14 2026 12:00:00 GMT+0300');
-  const feb29 = new Date('Wed Feb 11 2024 12:00:00 GMT+0300');
+  const octEnd = new Date('Wed Oct 31 2025 23:59:59');
+  const nov = new Date('Wed Nov 23 2025 12:00:00');
+  const feb28 = new Date('Wed Feb 14 2026 12:00:00');
+  const feb29 = new Date('Wed Feb 11 2024 12:00:00');
 
   test('getInitialCurrentDate', () => {
     // Expected: 2025-10-15T09:00:00.000Z
     // Received: 2025-09-15T12:00:00.000Z
     expect(getInitialCurrentDate(octStart)).toEqual(
-      new Date('2025-10-15T09:00:00.000Z'),
+      new Date('2025-10-15T12:00:00.000Z'),
     );
     expect(getInitialCurrentDate(octEnd)).toEqual(
-      new Date('2025-10-15T09:00:00.000Z'),
+      new Date('2025-10-15T12:00:00.000Z'),
     );
     expect(getInitialCurrentDate(nov)).toEqual(
-      new Date('2025-11-15T09:00:00.000Z'),
+      new Date('2025-11-15T12:00:00.000Z'),
     );
     expect(getInitialCurrentDate(feb28)).toEqual(
-      new Date('2026-02-15T09:00:00.000Z'),
+      new Date('2026-02-15T12:00:00.000Z'),
     );
     expect(getInitialCurrentDate(feb29)).toEqual(
-      new Date('2024-02-15T09:00:00.000Z'),
+      new Date('2024-02-15T12:00:00.000Z'),
     );
   });
 
@@ -53,38 +53,38 @@ describe('Calendar utils', () => {
   test('addMonths', () => {
     // addMonths and getInitialCurrentDate should be tested together to avoid "date jumps" (e.g. from 31.10.2025 to 01.12.2025)
     expect(addMonths(getInitialCurrentDate(octStart), 1)).toEqual(
-      new Date('2025-11-15T09:00:00.000Z'),
+      new Date('2025-11-15T12:00:00.000Z'),
     );
     expect(addMonths(getInitialCurrentDate(octEnd), 1)).toEqual(
-      new Date('2025-11-15T09:00:00.000Z'),
+      new Date('2025-11-15T12:00:00.000Z'),
     );
     expect(addMonths(getInitialCurrentDate(nov), 1)).toEqual(
-      new Date('2025-12-15T09:00:00.000Z'),
+      new Date('2025-12-15T12:00:00.000Z'),
     );
     expect(addMonths(getInitialCurrentDate(feb28), 1)).toEqual(
-      new Date('2026-03-15T09:00:00.000Z'),
+      new Date('2026-03-15T12:00:00.000Z'),
     );
     expect(addMonths(getInitialCurrentDate(feb29), 1)).toEqual(
-      new Date('2024-03-15T09:00:00.000Z'),
+      new Date('2024-03-15T12:00:00.000Z'),
     );
   });
 
   test('subMonths', () => {
     // subMonths and getInitialCurrentDate should be tested together to avoid "date jumps" (e.g. from 31.10.2025 to 01.12.2025)
     expect(subMonths(getInitialCurrentDate(octStart), 1)).toEqual(
-      new Date('2025-09-15T09:00:00.000Z'),
+      new Date('2025-09-15T12:00:00.000Z'),
     );
     expect(subMonths(getInitialCurrentDate(octEnd), 1)).toEqual(
-      new Date('2025-09-15T09:00:00.000Z'),
+      new Date('2025-09-15T12:00:00.000Z'),
     );
     expect(subMonths(getInitialCurrentDate(nov), 1)).toEqual(
-      new Date('2025-10-15T09:00:00.000Z'),
+      new Date('2025-10-15T12:00:00.000Z'),
     );
     expect(subMonths(getInitialCurrentDate(feb28), 1)).toEqual(
-      new Date('2026-01-15T09:00:00.000Z'),
+      new Date('2026-01-15T12:00:00.000Z'),
     );
     expect(subMonths(getInitialCurrentDate(feb29), 1)).toEqual(
-      new Date('2024-01-15T09:00:00.000Z'),
+      new Date('2024-01-15T12:00:00.000Z'),
     );
   });
 

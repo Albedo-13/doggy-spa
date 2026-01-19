@@ -1,6 +1,8 @@
 export const getInitialCurrentDate = (date: Date) => {
   // hardcode 15th day of the month for calendar stability during months changes (timezones might be an issue)
-  return new Date(date.getFullYear(), date.getMonth(), 15, 12, 0, 0, 0);
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  return new Date(Date.UTC(year, month, 15, 12, 0, 0, 0));
 };
 
 export const getDaysInMonth = (date: Date) => {
