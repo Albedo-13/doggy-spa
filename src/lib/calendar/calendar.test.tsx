@@ -119,32 +119,30 @@ describe('Calendar utils', () => {
   test('getDaysArray', () => {
     expect(getDaysArray(octStart)).toHaveLength(42);
     expect(getDaysArray(octStart)[0]).toEqual(
-      new Date('2025-09-28T21:00:00.000Z'),
+      new Date('2025-09-29T00:00:00.000Z'),
     );
     expect(getDaysArray(octStart)[41]).toEqual(
-      new Date('2025-11-08T21:00:00.000Z'),
+      new Date('2025-11-09T00:00:00.000Z'),
     );
 
     expect(getDaysArray(octEnd)).toHaveLength(42);
     expect(getDaysArray(octEnd)[0]).toEqual(
-      new Date('2025-09-28T21:00:00.000Z'),
+      new Date('2025-09-29T00:00:00.000Z'),
     );
     expect(getDaysArray(octEnd)[41]).toEqual(
-      new Date('2025-11-08T21:00:00.000Z'),
+      new Date('2025-11-09T00:00:00.000Z'),
     );
 
     expect(getDaysArray(feb28)).toHaveLength(42);
     expect(getDaysArray(feb28)[0]).toEqual(
-      new Date('2026-01-25T21:00:00.000Z'),
+      new Date('2026-01-26T00:00:00.000Z'),
     );
     expect(getDaysArray(feb28)[41]).toEqual(
-      new Date('2026-03-07T21:00:00.000Z'),
+      new Date('2026-03-08T00:00:00.000Z'),
     );
   });
 });
 
-// ошибка если не выбран компонент, смена месяцев (вперед назад), смена года (вперед назад), получится ли затестить выбор компонента?
-// props test
 describe('Calendar component', () => {
   test('Should be rendered', () => {
     render(<Calendar onChange={jest.fn()} />);

@@ -61,26 +61,26 @@ export const formatDate = (date: Date, format: string) => {
 export const getDaysArray = (date: Date) => {
   const year = date.getFullYear();
   const month = date.getMonth();
-  const firstDay = new Date(year, month, 1);
+  const firstDay = new Date(Date.UTC(year, month, 1));
   const startingDay = firstDay.getDay() || 7; // Convert Sunday (0) to 7
   const daysInMonth = getDaysInMonth(date);
   const days: Date[] = [];
 
   // Add empty days for padding before the first day
   for (let i = 1; i < startingDay; i++) {
-    const prevDate = new Date(year, month, 1 - i);
+    const prevDate = new Date(Date.UTC(year, month, 1 - i));
     days.unshift(prevDate);
   }
 
   // Add actual days of the month
   for (let i = 1; i <= daysInMonth; i++) {
-    days.push(new Date(year, month, i));
+    days.push(new Date(Date.UTC(year, month, i)));
   }
 
   // Add remaining days to complete the grid
   const remainingDays = 42 - days.length; // 6 rows * 7 columns
   for (let i = 1; i <= remainingDays; i++) {
-    days.push(new Date(year, month + 1, i));
+    days.push(new Date(Date.UTC(year, month + 1, i)));
   }
 
   return days;
