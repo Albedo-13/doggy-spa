@@ -30,7 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 3.2. add env variables
+      # 3.2. Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # 3.3. add env variables
       - name: Export env
         run: |
           echo "NEXT_PUBLIC_NINJAS_API_KEY=${{ secrets.NEXT_PUBLIC_NINJAS_API_KEY }}" >> $GITHUB_ENV
