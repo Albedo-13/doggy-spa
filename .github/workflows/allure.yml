@@ -45,7 +45,8 @@ jobs:
       - name: Run tests and generate report
         env:
           CI: true
-        run: npx allure run -- npm run test
+        run: npm run allure
+        # run: npx allure run -- npm run test
 
         # This generates allure-results/ directory and creates allure-report/ with summary.json
 
