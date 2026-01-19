@@ -34,6 +34,7 @@ describe('Modal sign up form', () => {
       screen.getByPlaceholderText('Email'),
       'valid@email.com',
     );
+    expect(await screen.getByPlaceholderText('Email')).toHaveValue('valid@email.com');
     await userEvent.click(screen.getByRole('button'));
 
     const errorMessage = screen.queryByText('email must be a valid email');
@@ -47,7 +48,7 @@ describe('Modal sign up form', () => {
     screen.debug();
 
     // empty means that form is submitted and cleared successfully
-    expect(await screen.findByPlaceholderText('Email')).toHaveValue('');
+    expect(await screen.getByPlaceholderText('Email')).toHaveValue('');
 
     // request on form submit
     // const response = await fetch(

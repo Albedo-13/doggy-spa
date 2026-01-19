@@ -8,12 +8,12 @@
     "start": "next start",
     "lint": "next lint && eslint --fix",
     "prepare": "husky",
-    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "pw": "npx playwright test",
     "pw:ui": "npx playwright test --ui",
     "pw:report": "npx playwright show-report",
     "allure": "allure serve allure-results",
-    "coverage": "set NODE_OPTIONS=--experimental-vm-modules && jest --coverage"
+    "coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
   "dependencies": {
     "@apollo/client": "3.13.8",
@@ -24,6 +24,7 @@
     "allure": "^3.0.1",
     "apollo-server-micro": "3.13.0",
     "clsx": "^2.1.1",
+    "cross-env": "^10.1.0",
     "emailjs": "4.0.3",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "graphql": "16.11.0",
