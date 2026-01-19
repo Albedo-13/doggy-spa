@@ -16,13 +16,15 @@ import {
 } from './calendar.utils';
 
 describe('Calendar utils', () => {
-  const octStart = new Date('Wed Oct 1 2025 00:00:00 GMT+0300');
+  const octStart = new Date('Wed Oct 1 2025 00:00:00');
   const octEnd = new Date('Wed Oct 31 2025 23:59:59 GMT+0300');
   const nov = new Date('Wed Nov 23 2025 12:00:00 GMT+0300');
   const feb28 = new Date('Wed Feb 14 2026 12:00:00 GMT+0300');
   const feb29 = new Date('Wed Feb 11 2024 12:00:00 GMT+0300');
 
   test('getInitialCurrentDate', () => {
+    // Expected: 2025-10-15T09:00:00.000Z
+    // Received: 2025-09-15T12:00:00.000Z
     expect(getInitialCurrentDate(octStart)).toEqual(
       new Date('2025-10-15T09:00:00.000Z'),
     );
