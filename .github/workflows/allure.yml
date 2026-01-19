@@ -64,11 +64,11 @@ jobs:
 
       # 6. Deploy to gh-pages
       - name: Deploy to gh-pages
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: master
+          publish_branch: gh-pages
           publish_dir: ./allure-report
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.GITHUB_TOKEN }}
