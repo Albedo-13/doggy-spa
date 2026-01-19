@@ -23,7 +23,13 @@ describe('Footer sign up form', () => {
   test('Should call emailjs on valid submit', async () => {
     render(<FooterForm />);
 
-    await userEvent.type(screen.getByPlaceholderText('Email'), 'valid@email.com');
+    await userEvent.type(
+      screen.getByPlaceholderText('Email'),
+      'valid@email.com',
+    );
+    expect(await screen.getByPlaceholderText('Email')).toHaveValue(
+      'valid@email.com',
+    );
     await userEvent.click(screen.getByRole('button'));
 
     const errorMessage = screen.queryByText('email must be a valid email');
