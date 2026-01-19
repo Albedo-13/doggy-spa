@@ -21,7 +21,13 @@ const simpleSort = {
 };
 
 const ignores = {
-  ignores: ['node_modules/**/*', '.next/**/*'],
+  ignores: [
+    'node_modules/**/*',
+    '.next/**/*',
+    'next-env.d.ts',
+    'allure-results/**/*',
+    'allure-report/**/*',
+  ],
 };
 
 const eslintConfig = [

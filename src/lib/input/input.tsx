@@ -27,7 +27,7 @@ export default function Input({
         {...props}
       />
       {error && (
-        <div className={clsx(styles.error, classNameError || '')}>
+        <div role='alert' className={clsx(styles.error, classNameError || '')}>
           {error?.message}
         </div>
       )}

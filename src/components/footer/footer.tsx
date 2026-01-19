@@ -86,7 +86,7 @@ export default function Footer() {
               <Link href="/about-us">About Us</Link>
             </li>
             <li className={styles.listItem}>
-              <Link href="/about-us">Contact Us</Link>
+              <Link href="/contact-us">Contact Us</Link>
             </li>
             <li className={styles.listItem}>FAQs</li>
             <li className={styles.listItem}>Help with navigation</li>

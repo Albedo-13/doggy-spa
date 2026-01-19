@@ -91,6 +91,7 @@ export default function ContactSpaForm() {
         disabled={isSubmitting}
         type="submit"
         size="large"
+        data-testid='contact-spa-form-submit'
       >
         Submit
       </Button>

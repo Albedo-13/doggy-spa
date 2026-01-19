@@ -192,6 +192,7 @@ export default function BookAppointmentForm() {
             disabled={isSubmitting}
             type="submit"
             size="large"
+            data-testid="book-appointment-form-submit"
           >
             Book Appointment
           </Button>

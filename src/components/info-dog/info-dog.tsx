@@ -17,7 +17,6 @@ import { searchDogSchema } from '@/utils/validation-schemas';
 import { DEBOUNCE_SEARCH_DELAY } from '../../utils/constants';
 import styles from './info-dog.module.scss';
 
-
 type InfoDogProps = {
   id?: string;
 };
@@ -27,8 +26,9 @@ export default function InfoDog({ id = '' }: InfoDogProps) {
   const { data: urlData, loading: isDogLoading } = useQuery<{ dogs: Dog[] }>(
     SEARCH_DOG,
     {
-      variables: { name: id[0] },
-    }
+      variables: { name: id },
+      skip: !id,
+    },
   );
 
   // for input search
@@ -36,7 +36,7 @@ export default function InfoDog({ id = '' }: InfoDogProps) {
     useLazyQuery<{
       dogs: Dog[];
     }>(SEARCH_DOG, {
-      variables: { name: id[0] },
+      variables: { name: id },
     });
 
   const {
@@ -50,7 +50,7 @@ export default function InfoDog({ id = '' }: InfoDogProps) {
   const watchDogName = watch('searchDogName');
   const [debouncedWatchDogName] = useDebounce(
     watchDogName,
-    DEBOUNCE_SEARCH_DELAY
+    DEBOUNCE_SEARCH_DELAY,
   );
 
   useEffect(() => {

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { SIGN_UP_MODAL_SHOW_DELAY } from '@/utils/constants';
-import { shouldDisableScroll } from '@/utils/should-disable-scroll';
+import { shouldDisableScroll } from '@/utils/should-disable-scroll/should-disable-scroll';
 
 /**
  * Custom hook for managing modal state and functionality.
@@ -29,7 +29,10 @@ export const useModal = (isOpenWithDelay = false) => {
         openModal();
       }, SIGN_UP_MODAL_SHOW_DELAY);
 
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        shouldDisableScroll(false);
+      };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

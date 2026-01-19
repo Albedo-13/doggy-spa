@@ -22,14 +22,13 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<SignUpFormInputs>({
     resolver: yupResolver(subscribeSchema),
   });
 
   const onSubmit = async (data: SignUpFormInputs) => {
-    console.log(data);
-
     const emailData = {
       email: data.email,
     };
@@ -45,13 +44,19 @@ export default function SignUpForm({ closeModal }: SingUpFormProps) {
           },
         )
         .then(() => {
+          reset();
           closeModal();
         });
     }
   };
 
   return (
-    <form ref={form} onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form
+      data-testid="modal-sign-up-form"
+      ref={form}
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.form}
+    >
       <Input
         {...register('email')}
         type="text"
