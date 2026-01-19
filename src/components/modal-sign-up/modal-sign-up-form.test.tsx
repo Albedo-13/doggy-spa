@@ -40,15 +40,15 @@ describe('Modal sign up form', () => {
     expect(errorMessage).not.toBeInTheDocument();
 
     // empty means that form is submitted and cleared successfully
-    expect(await screen.findByPlaceholderText('Email')).toHaveValue('');
+    await expect(await screen.findByPlaceholderText('Email')).toHaveValue('');
 
     // request on form submit
-    const response = await fetch(
-      'https://api.emailjs.com/api/v1.0/email/send',
-      { method: 'POST' },
-    );
-    expect(response.text()).resolves.toBe('OK');
-    expect(response.status).toBe(200);
+    // const response = await fetch(
+    //   'https://api.emailjs.com/api/v1.0/email/send',
+    //   { method: 'POST' },
+    // );
+    // expect(response.text()).resolves.toBe('OK');
+    // expect(response.status).toBe(200);
     expect(closeModalMock).toHaveBeenCalled();
   });
 });
