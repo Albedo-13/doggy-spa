@@ -1,0 +1,1 @@
+{"id":"0b6aecdbc65fbaa7d10d5d92b011a24c","fullName":"src/utils/regexps/regexps.test.ts#Card number regular expression Should not match card numbers with non-numeric characters","name":"Should not match card numbers with non-numeric characters","status":"passed","testResultsByEnv":{"default":"f0c17e0c3e43e3d3fa8aeb2cf6545983"}}

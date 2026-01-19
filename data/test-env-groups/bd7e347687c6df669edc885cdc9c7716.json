@@ -1,0 +1,1 @@
+{"id":"bd7e347687c6df669edc885cdc9c7716","fullName":"src/utils/regexps/regexps.test.ts#Expiry date regular expression Should be invalid for all non-matching pattern MM/YY","name":"Should be invalid for all non-matching pattern MM/YY","status":"passed","testResultsByEnv":{"default":"9ce071f4ad0caf77f82188a56b8171c2"}}
