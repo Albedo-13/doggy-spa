@@ -5,6 +5,8 @@
 
 import type { Config } from 'jest';
 
+const isCI = !!process.env.CI;
+
 const config: Config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -141,7 +143,7 @@ const config: Config = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: ['<rootDir>/.env'],
+  setupFiles: isCI ? [] : ['<rootDir>/.env'], // locally .env, no .env on CI/CD
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: ['<rootDir>/src/mocks/msw/jest.setup.ts'],

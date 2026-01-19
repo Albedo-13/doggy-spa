@@ -26,12 +26,25 @@ jobs:
         with:
           node-version: '20'
 
-      # 3. Install dependencies
+      # 3.1. Install dependencies
       - name: Install dependencies
         run: npm ci
 
+      # 3.2. add env variables
+      - name: Export env
+        run: |
+          echo "NEXT_PUBLIC_NINJAS_API_KEY=${{ vars.NEXT_PUBLIC_NINJAS_API_KEY }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILTO=${{ vars.NEXT_PUBLIC_EMAILTO }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILJS_SERVICE_ID=${{ vars.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=${{ vars.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILJS_SUBSCRIPTION_ID_TEMPLATE=${{ vars.NEXT_PUBLIC_EMAILJS_SUBSCRIPTION_ID_TEMPLATE }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILJS_BOOKING_ID_TEMPLATE=${{ vars.NEXT_PUBLIC_EMAILJS_BOOKING_ID_TEMPLATE }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_MAPBOX_GL_KEY=${{ vars.NEXT_PUBLIC_MAPBOX_GL_KEY }}" >> $GITHUB_ENV
+
       # 4. Run tests (must use Allure reporter)
       - name: Run tests and generate report
+        env:
+          CI: true
         run: npx allure run -- npm run test
         # This generates allure-results/ directory and creates allure-report/ with summary.json
 
