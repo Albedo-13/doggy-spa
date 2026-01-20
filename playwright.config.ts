@@ -36,6 +36,9 @@ export default defineConfig({
 
     // Записывать видео только при повторной попытке теста в первый раз.
     video: 'on-first-retry',
+
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:3000',
+    headless: true,
   },
 
   /* Configure projects for major browsers */

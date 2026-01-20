@@ -2,12 +2,13 @@ import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/book-appointment');
-  await page.waitForLoadState('networkidle');
+  // await page.waitForLoadState('networkidle');
 });
 
 test('Should successfully submit the form', async ({ page }) => {
   const firstName = page.getByPlaceholder('First Name');
   // TODO: waiting for getByPlaceholder('First Name')
+  await expect(firstName).toBeVisible({ timeout: 15000 });
   await firstName.fill('John');
 
   const lastName = page.getByPlaceholder('Last Name');
