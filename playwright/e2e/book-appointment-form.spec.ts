@@ -2,8 +2,13 @@ import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/book-appointment');
-  
+
   console.log('!! URL:', page.url(), 'TITLE:', await page.title());
+  console.log(
+    '!! env:',
+    process.env.NEXT_PUBLIC_MAPBOX_GL_KEY,
+    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+  );
   // await page.waitForLoadState('networkidle');
 });
 

@@ -38,7 +38,7 @@ export default defineConfig({
     video: 'on-first-retry',
 
     baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:3000',
-    headless: true,
+    headless: false,
   },
 
   /* Configure projects for major browsers */
