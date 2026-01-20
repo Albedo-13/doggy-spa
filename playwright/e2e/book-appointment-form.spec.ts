@@ -7,6 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test('Should successfully submit the form', async ({ page }) => {
   const firstName = page.getByPlaceholder('First Name');
+  // TODO: waiting for getByPlaceholder('First Name')
   await firstName.fill('John');
 
   const lastName = page.getByPlaceholder('Last Name');
@@ -62,6 +63,7 @@ test('Should successfully submit the form', async ({ page }) => {
 
 test('Should show errors on wrong inputs', async ({ page }) => {
   const submitButton = page.getByTestId('book-appointment-form-submit');
+  // TODO: waiting for getByTestId('book-appointment-form-submit')
   await submitButton.click();
 
   await expect(page.getByText("Field 'First Name' is required")).toBeVisible();
