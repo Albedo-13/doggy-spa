@@ -9,6 +9,16 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
+      - name: Export env
+        run: |
+          echo "NEXT_PUBLIC_NINJAS_API_KEY=${{ secrets.NEXT_PUBLIC_NINJAS_API_KEY }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILTO=${{ secrets.NEXT_PUBLIC_EMAILTO }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILJS_SERVICE_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=${{ secrets.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILJS_SUBSCRIPTION_ID_TEMPLATE=${{ secrets.NEXT_PUBLIC_EMAILJS_SUBSCRIPTION_ID_TEMPLATE }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_EMAILJS_BOOKING_ID_TEMPLATE=${{ secrets.NEXT_PUBLIC_EMAILJS_BOOKING_ID_TEMPLATE }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_MAPBOX_GL_KEY=${{ secrets.NEXT_PUBLIC_MAPBOX_GL_KEY }}" >> $GITHUB_ENV
+
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
