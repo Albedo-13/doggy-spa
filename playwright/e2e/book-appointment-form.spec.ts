@@ -2,23 +2,11 @@ import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/book-appointment');
-
-  console.log('!! URL:', page.url(), 'TITLE:', await page.title());
-  console.log(
-    '!! env:',
-    process.env.NEXT_PUBLIC_MAPBOX_GL_KEY,
-    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-  );
-  // await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('networkidle');
 });
 
 test('Should successfully submit the form', async ({ page }) => {
-  await expect(page.getByRole('heading', { name: /book/i })).toBeVisible({
-    timeout: 15000,
-  });
-
   const firstName = page.getByPlaceholder('First Name');
-  // TODO: waiting for getByPlaceholder('First Name')
   await expect(firstName).toBeVisible({ timeout: 15000 });
   await firstName.fill('John');
 
@@ -75,7 +63,6 @@ test('Should successfully submit the form', async ({ page }) => {
 
 test('Should show errors on wrong inputs', async ({ page }) => {
   const submitButton = page.getByTestId('book-appointment-form-submit');
-  // TODO: waiting for getByTestId('book-appointment-form-submit')
   await submitButton.click();
 
   await expect(page.getByText("Field 'First Name' is required")).toBeVisible();
