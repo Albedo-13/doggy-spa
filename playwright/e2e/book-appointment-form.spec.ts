@@ -7,6 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test('Should successfully submit the form', async ({ page }) => {
   const firstName = page.getByPlaceholder('First Name');
+  await expect(firstName).toBeVisible({ timeout: 15000 });
   await firstName.fill('John');
 
   const lastName = page.getByPlaceholder('Last Name');

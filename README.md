@@ -1,5 +1,10 @@
 # Modsen Doggy Spa
 
+## Деплои
+
+- **[Деплой проекта](https://doggy-spa-albedo.netlify.app/)** - Проект развернут на Netlify
+- **[Allure отчет](https://albedo-13.github.io/doggy-spa/)** - Отчет Allure развернут на Github Pages (gh-pages)
+
 ## Содержание
 
 - [Техническое задание](#Техническое-задание)
@@ -49,7 +54,7 @@
 ## Дополнительный функционал
 
 - Настроить CI/CD, используя [GitHub Actions](https://github.com/features/actions);
-- Собрать проект с нуля(с настройками всех конфигов: eslint, prettier, husky и тд.).
+- Собрать проект с нуля (с настройками всех конфигов: eslint, prettier, husky и тд.).
 
 ### Пример графического представления:
 

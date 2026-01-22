@@ -11,8 +11,9 @@
     "jest": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "pw": "npx playwright test",
     "pw:ui": "npx playwright test --ui",
+    "pw:update": "npx playwright test --update-snapshots=missing",
     "pw:report": "npx playwright show-report",
-    "allure": "npx allure run -- npm run jest",
+    "allure": "npx allure run -- npm run jest && npx allure run -- npm run pw",
     "allure:serve": "allure serve allure-results"
   },
   "dependencies": {
