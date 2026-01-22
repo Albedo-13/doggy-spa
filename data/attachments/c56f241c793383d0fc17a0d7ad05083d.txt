@@ -1,0 +1,45 @@
+(node:7977) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/utils/regexps/[22m[1mregexps.test.ts[22m
+(node:7983) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7976) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/components/modal-sign-up/[22m[1mmodal-sign-up-form.test.tsx[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/lib/calendar/[22m[1mcalendar.test.tsx[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/lib/checkbox-group/[22m[1mcheckbox-group.test.tsx[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/lib/input-search/[22m[1minput-search.test.tsx[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/components/info-dog/[22m[1minfo-dog.test.tsx[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/hooks/[22m[1muse-modal.test.ts[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/components/footer/[22m[1mfooter-form.test.tsx[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/lib/input/[22m[1minput.test.tsx[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/components/header/[22m[1mheader-link.test.tsx[22m
+  [1m● [22mConsole
+
+    [2m[31mconsole.error[39m[22m
+[31m      Error: Not implemented: navigation (except hash changes)[39m
+[31m          at module.exports (/home/runner/work/doggy-spa/doggy-spa/node_modules/jsdom/lib/jsdom/browser/not-implemented.js:9:17)[39m
+[31m          at navigateFetch (/home/runner/work/doggy-spa/doggy-spa/node_modules/jsdom/lib/jsdom/living/window/navigation.js:77:3)[39m
+[31m          at exports.navigate (/home/runner/work/doggy-spa/doggy-spa/node_modules/jsdom/lib/jsdom/living/window/navigation.js:55:3)[39m
+[31m          at Timeout._onTimeout (/home/runner/work/doggy-spa/doggy-spa/node_modules/jsdom/lib/jsdom/living/nodes/HTMLHyperlinkElementUtils-impl.js:80:7)[39m
+[31m          at listOnTimeout (node:internal/timers:581:17)[39m
+[31m          at processTimers (node:internal/timers:519:7) {[39m
+[31m        type: 'not implemented'[39m
+[31m      }[39m
+[2m[22m
+[2m      [2mat VirtualConsole.<anonymous> ([22m[2mnode_modules/@jest/environment-jsdom-abstract/build/index.js[2m:87:23)[22m[2m[22m
+[2m      [2mat module.exports ([22m[2mnode_modules/jsdom/lib/jsdom/browser/not-implemented.js[2m:12:26)[22m[2m[22m
+[2m      [2mat navigateFetch ([22m[2mnode_modules/jsdom/lib/jsdom/living/window/navigation.js[2m:77:3)[22m[2m[22m
+[2m      [2mat exports.navigate ([22m[2mnode_modules/jsdom/lib/jsdom/living/window/navigation.js[2m:55:3)[22m[2m[22m
+[2m      [2mat Timeout._onTimeout ([22m[2mnode_modules/jsdom/lib/jsdom/living/nodes/HTMLHyperlinkElementUtils-impl.js[2m:80:7)[22m[2m[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/lib/input-area/[22m[1minput-area.test.tsx[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/utils/should-disable-scroll/[22m[1mshould-disable-scroll.test.ts[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/lib/button/[22m[1mbutton.test.tsx[22m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2msrc/lib/spinner/[22m[1mspinner.test.tsx[22m
+
+[1mTest Suites: [22m[1m[32m14 passed[39m[22m, 14 total
+[1mTests:       [22m[1m[32m54 passed[39m[22m, 54 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        6.8 s
+[2mRan all test suites[22m[2m.[22m

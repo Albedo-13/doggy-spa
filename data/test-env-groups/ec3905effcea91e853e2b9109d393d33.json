@@ -1,0 +1,1 @@
+{"id":"ec3905effcea91e853e2b9109d393d33","fullName":"src/utils/regexps/regexps.test.ts#Card number regular expression Should not match card numbers with less or more than 16 digits","name":"Should not match card numbers with less or more than 16 digits","status":"passed","testResultsByEnv":{"default":"91eef1adf9df4ce43b477855337f3d3a"}}

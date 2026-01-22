@@ -1,0 +1,1 @@
+{"id":"1ebae1bbb28e6cf2033b04291695ba86","fullName":"src/components/modal-sign-up/modal-sign-up-form.test.tsx#Modal sign up form Should call emailjs & closeModal on valid submit","name":"Should call emailjs & closeModal on valid submit","status":"passed","testResultsByEnv":{"default":"48dd725bb6fd4511b8342d9c0bfd544f"}}
