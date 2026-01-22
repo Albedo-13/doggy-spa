@@ -16,25 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      # 2. Setup your language/runtime
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      # 3.1. Install dependencies
-      - name: Install dependencies
-        run: npm ci
-
-      # # 3.2. Install Playwright Browsers
-      # - name: Install Playwright Browsers
-      #   run: npx playwright install --with-deps
-
-      # 3.3. add env variables
+      # 1. add env variables
       - name: Export env
         run: |
           echo "NEXT_PUBLIC_NINJAS_API_KEY=${{ secrets.NEXT_PUBLIC_NINJAS_API_KEY }}" >> $GITHUB_ENV
@@ -45,22 +27,54 @@ jobs:
           echo "NEXT_PUBLIC_EMAILJS_BOOKING_ID_TEMPLATE=${{ secrets.NEXT_PUBLIC_EMAILJS_BOOKING_ID_TEMPLATE }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_MAPBOX_GL_KEY=${{ secrets.NEXT_PUBLIC_MAPBOX_GL_KEY }}" >> $GITHUB_ENV
 
-      # 4. Run tests (must use Allure reporter)
+      # 2. Checkout code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 3. Setup your language/runtime
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 4.1. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4.2. Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # 4.3. Run Playwright for update of missing snapshots
+      - name: Run Playwright for update of missing snapshots
+        env:
+          PLAYWRIGHT_BASE_URL: http://localhost:3000
+        run: npm run pw:update
+        continue-on-error: true
+
+      # # 4.4. Run Playwright tests
+      # - name: Run Playwright tests
+      #   env:
+      #     PLAYWRIGHT_BASE_URL: http://localhost:3000
+      #   run: npm run pw
+      # 5. Run tests (must use Allure reporter)
       - name: Run tests and generate report
         env:
           CI: true
+          PLAYWRIGHT_BASE_URL: http://localhost:3000
         run: npm run allure # This generates allure-results/ directory and creates allure-report/ with summary.json
+        # run: npm run allure # This generates allure-results/ directory and creates allure-report/ with summary.json
         # run: npx allure run -- npm run test
         # // "allure": "npx allure run -- npm run jest && npx allure run -- npm run pw",
 
-      # 5. Post summary to PR
+      # 6. Post summary to PR
       - name: Run Allure Action
         uses: allure-framework/allure-action@v0
         with:
           report-directory: './allure-report'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # 6. Deploy to gh-pages
+      # 7. Deploy to gh-pages
       - name: Deploy to gh-pages
         if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
@@ -70,3 +84,11 @@ jobs:
           publish_dir: ./allure-report
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.GITHUB_TOKEN }}
+
+      # 8. Upload artifact (for debugging)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

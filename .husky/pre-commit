@@ -1,4 +1,4 @@
 npm run jest
-npm run jest
+npm run pw
 npm run lint
 npm run build
