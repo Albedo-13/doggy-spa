@@ -13,7 +13,8 @@
     "pw:ui": "npx playwright test --ui",
     "pw:update": "npx playwright test --update-snapshots=missing",
     "pw:report": "npx playwright show-report",
-    "allure": "npx allure run -- npm run jest && npx allure run -- npm run pw",
+    "test:all": "npm run jest && npm run pw",
+    "allure": "npx allure run -- npm run test:all",
     "allure:serve": "allure serve allure-results"
   },
   "dependencies": {

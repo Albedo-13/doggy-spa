@@ -47,25 +47,15 @@ jobs:
 
       # 4.3. Run Playwright for update of missing snapshots
       - name: Run Playwright for update of missing snapshots
-        env:
-          PLAYWRIGHT_BASE_URL: http://localhost:3000
         run: npm run pw:update
         continue-on-error: true
 
-      # # 4.4. Run Playwright tests
-      # - name: Run Playwright tests
-      #   env:
-      #     PLAYWRIGHT_BASE_URL: http://localhost:3000
-      #   run: npm run pw
       # 5. Run tests (must use Allure reporter)
       - name: Run tests and generate report
         env:
           CI: true
-          PLAYWRIGHT_BASE_URL: http://localhost:3000
         run: npm run allure # This generates allure-results/ directory and creates allure-report/ with summary.json
-        # run: npm run allure # This generates allure-results/ directory and creates allure-report/ with summary.json
-        # run: npx allure run -- npm run test
-        # // "allure": "npx allure run -- npm run jest && npx allure run -- npm run pw",
+
 
       # 6. Post summary to PR
       - name: Run Allure Action

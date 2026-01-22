@@ -34,14 +34,10 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright for update of missing snapshots
-        # env:
-        #   PLAYWRIGHT_BASE_URL: http://localhost:3000
         run: npm run pw:update
         continue-on-error: true
 
       - name: Run Playwright tests
-        # env:
-        #   PLAYWRIGHT_BASE_URL: http://localhost:3000
         run: npm run pw
 
       - uses: actions/upload-artifact@v4
